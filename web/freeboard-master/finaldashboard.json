@@ -1,0 +1,196 @@
+{
+	"version": 1,
+	"allow_edit": true,
+	"plugins": [],
+	"panes": [
+		{
+			"width": 1,
+			"row": {
+				"0": 1,
+				"3": 1
+			},
+			"col": {
+				"0": 0,
+				"3": 2
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "gauge",
+					"settings": {
+						"title": "temp",
+						"value": "datasources[\"temp\"][\"m2m:cin\"][\"con\"]",
+						"units": "",
+						"min_value": "18",
+						"max_value": "22"
+					}
+				},
+				{
+					"type": "gauge",
+					"settings": {
+						"title": "humi",
+						"value": "datasources[\"humi\"][\"m2m:cin\"][\"con\"]",
+						"min_value": "45",
+						"max_value": "50"
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"0": 1,
+				"3": 1
+			},
+			"col": {
+				"0": 0,
+				"3": 3
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "humi",
+						"size": "regular",
+						"value": "datasources[\"humi\"][\"m2m:cin\"][\"con\"]",
+						"animate": true,
+						"units": "%"
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "temp",
+						"size": "regular",
+						"value": "datasources[\"temp\"][\"m2m:cin\"][\"con\"]",
+						"animate": true,
+						"units": "C"
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"3": 13
+			},
+			"col": {
+				"3": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "clock",
+						"size": "regular",
+						"value": "datasources[\"clock\"][\"time_string_value\"]",
+						"animate": true
+					}
+				}
+			]
+		},
+		{
+			"title": "temp",
+			"width": 1,
+			"row": {
+				"3": 7
+			},
+			"col": {
+				"3": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "sparkline",
+					"settings": {
+						"value": [
+							"datasources[\"temp\"][\"m2m:cin\"][\"con\"]"
+						]
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"3": 1
+			},
+			"col": {
+				"3": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "sparkline",
+					"settings": {
+						"title": "humi",
+						"value": [
+							"datasources[\"humi\"][\"m2m:cin\"][\"con\"]"
+						]
+					}
+				}
+			]
+		}
+	],
+	"datasources": [
+		{
+			"name": "temp",
+			"type": "JSON",
+			"settings": {
+				"url": "http://192.168.0.112:7579/Mobius/temp1/DATA/la",
+				"use_thingproxy": true,
+				"refresh": 2,
+				"method": "GET",
+				"headers": [
+					{
+						"name": "X-M2M-RI",
+						"value": "12345"
+					},
+					{
+						"name": "X-M2M-Origin",
+						"value": "S"
+					},
+					{
+						"name": "Accept",
+						"value": "application/json"
+					}
+				],
+				"name": "temp"
+			}
+		},
+		{
+			"name": "humi",
+			"type": "JSON",
+			"settings": {
+				"url": "http://192.168.0.112:7579/Mobius/humi1/DATA/la",
+				"use_thingproxy": true,
+				"refresh": 2,
+				"method": "GET",
+				"headers": [
+					{
+						"name": "X-M2M-Origin",
+						"value": "S"
+					},
+					{
+						"name": "X-M2M-RI",
+						"value": "12345"
+					},
+					{
+						"name": "Accept",
+						"value": "application/json"
+					}
+				]
+			}
+		},
+		{
+			"name": "clock",
+			"type": "clock",
+			"settings": {
+				"refresh": 1
+			}
+		}
+	],
+	"columns": 3
+}
